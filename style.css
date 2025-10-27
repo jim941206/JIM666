@@ -1,0 +1,111 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* 避免出現捲軸 */
+  background-color: #121220;
+  font-family: sans-serif; /* 設定預設字體 */
+}
+
+/* 讓 p5.js 畫布置中的容器 */
+#canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+/* 選單容器，用於偵測滑鼠懸停 */
+.menu-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1000;
+  width: 300px; /* 容器寬度，包含選單和觸發區域 */
+  transform: translateX(-250px); /* 初始狀態下隱藏大部分選單 */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 滑鼠懸停在容器上時，將選單完全顯示 */
+.menu-container:hover {
+  transform: translateX(0);
+}
+
+.side-menu {
+  width: 250px; /* 選單實際寬度 */
+  height: 100%;
+  background-color: rgba(44, 44, 60, 0.85); /* 帶有透明度的背景 */
+  backdrop-filter: blur(5px); /* 毛玻璃效果 */
+  padding-top: 60px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.side-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li a {
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 32px; /* 選單文字大小 */
+  color: #f1f1f1;
+  display: block;
+  transition: 0.2s;
+}
+
+.side-menu li a:hover {
+  background-color: #575760;
+  color: #fff;
+}
+
+/* Iframe 彈出視窗樣式 */
+#iframe-overlay {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* 半透明黑色背景 */
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+#iframe-wrapper {
+  position: relative;
+  width: 70%;
+  height: 85%;
+  background-color: #1c1c28;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+#content-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+#close-iframe-btn {
+  position: absolute;
+  top: -45px;
+  right: -5px;
+  font-size: 40px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
